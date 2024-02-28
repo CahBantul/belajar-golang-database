@@ -18,7 +18,7 @@ func NewCommentRepository(db *sql.DB) CommentRepository {
 }
 
 func (repository *commentRepositoryImpl) Insert(ctx context.Context, comment entity.Comment) (entity.Comment, error) {
-	script := "INSERT INTO comment(email, comment) VALUES (?,?)"
+	script := "INSERT INTO comments(email, comment) VALUES (?,?)"
 	result, err := repository.DB.ExecContext(ctx, script, comment.Email, comment.Comment)
 	if err != nil {
 		return comment, err
